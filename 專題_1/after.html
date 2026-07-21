@@ -1,0 +1,231 @@
+<!DOCTYPE html> <!-- 宣告使用 HTML5 文件格式 -->
+<html lang="zh-Hant"> <!-- 設定網頁語言為繁體中文 -->
+
+<head>
+  <meta charset="UTF-8"> <!-- 設定網頁字元編碼為 UTF-8，支援各種語言字元 -->
+  <title>入學信息</title> <!-- 瀏覽器標籤頁顯示的標題 -->
+
+  <style>
+    /* 全站共用的基本樣式 */
+    body {
+      font-family: 'Segoe UI', sans-serif; /* 設定字體樣式 */
+      margin: 0; /* 去除預設外距 */
+      padding: 0; /* 去除預設內距 */
+      background-color: #f0f6ff; /* 淺藍色背景 */
+      color: #003366; /* 文字顏色深藍 */
+      line-height: 1.6; /* 行距加大，易閱讀 */
+    }
+
+    /* 頁首樣式 */
+    header {
+      background-color: #002855; /* 深藍背景 */
+      padding: 20px; /* 內距 */
+      display: flex; /* 使用彈性盒子 */
+      flex-wrap: wrap; /* 可換行 */
+      justify-content: space-between; /* 兩邊分散 */
+      align-items: center; /* 垂直置中 */
+      color: white; /* 文字白色 */
+    }
+
+    /* 頁首主標題 */
+    .header-logo h1 {
+      margin: 0; /* 去除外距 */
+      font-size: 26px; /* 字體大小 */
+      color: #ffffff; /* 白色文字 */
+    }
+
+    /* 頁首副標題 */
+    .header-logo h2 {
+      margin-top: 5px; /* 與上方間隔5px */
+      font-size: 16px; /* 較小字體 */
+      color: #a3cfff; /* 淺藍色文字 */
+    }
+
+    /* 語言選擇器區塊 */
+    .language-selector {
+      margin-top: 10px; /* 上方間距 */
+    }
+
+    /* Google 翻譯插件定位 */
+    #google_translate_element {
+      position: absolute; /* 絕對定位 */
+      top: 20px; /* 上方距20px */
+      right: 20px; /* 右方距20px */
+      z-index: 1000; /* 置於最上層 */
+    }
+
+    /* 主要內容與外框容器 */
+    main, .box-container {
+      padding: 30px; /* 內距 */
+      max-width: 1200px; /* 最大寬度 */
+      margin: 0 auto; /* 水平置中 */
+    }
+
+    /* 外層容器彈性盒子 */
+    .box-container {
+      display: flex; /* 啟用彈性盒子 */
+      flex-wrap: wrap; /* 允許換行 */
+      justify-content: space-between; /* 子元素左右分散 */
+      gap: 30px; /* 間隔 */
+    }
+
+    /* 各區塊樣式 */
+    .section-box {
+      flex: 1 1 calc(33.333% - 30px); /* 三分之一寬度扣除間距 */
+      min-width: 280px; /* 最小寬度 */
+      background-color: #ffffff; /* 白底 */
+      padding: 20px; /* 內距 */
+      border: 2px solid #004080; /* 邊框 */
+      border-radius: 12px; /* 圓角 */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 陰影 */
+      transition: transform 0.2s; /* 變形過渡 */
+    }
+
+    /* 滑鼠懸停升起效果 */
+    .section-box:hover {
+      transform: translateY(-5px);
+    }
+
+    /* 區塊標題 */
+    .section-box h2 {
+      font-size: 18px; /* 字體大小 */
+      margin-bottom: 10px; /* 下方間距 */
+      color: #004080; /* 深藍字色 */
+      display: flex; /* flex 方便排版 */
+      align-items: center; /* 垂直置中 */
+    }
+
+    /* 標題前的圖示 */
+    .icon {
+      margin-right: 8px; /* 右側空間 */
+    }
+
+    /* 區塊內清單 */
+    .section-box ul {
+      list-style: disc; /* 圓點符號 */
+      padding-left: 20px; /* 左內距 */
+      margin: 10px 0; /* 上下間距 */
+    }
+
+    /* 區塊內段落底部空間 */
+    .section-box p {
+      margin-bottom: 8px;
+    }
+
+    /* 返回按鈕容器置中 */
+    .button-grid {
+      display: flex; /* 彈性盒子 */
+      justify-content: center; /* 置中 */
+      margin-top: 40px; /* 上方間距 */
+    }
+
+    .back-button {
+      padding: 15px 30px; /* 內邊距 */
+      font-size: 18px; /* 字體大小 */
+      background-color: white; /* 白色背景 */
+      color: #002855; /* 深藍字體 */
+      border-radius: 10px; /* 圓角 */
+      cursor: pointer; /* 游標變手指 */
+      border: none; /* 無邊框 */
+      transition: background-color 0.2s; /* 背景色漸變 */
+      display: block; /* 讓按鈕獨占一行 */
+      margin: 0 auto; /* 水平置中 */
+      max-width: 200px; /* 最大寬度 */
+      text-align: center; /* 文字置中 */
+    }
+    /* 按鈕懸停效果 */
+    .back-button:hover {
+      background-color: #e6f0ff; /* 淺藍背景 */
+    }
+
+    /* 頁腳樣式 */
+    footer {
+      background-color: #002855; /* 深藍底 */
+      color: white; /* 白字 */
+      text-align: center; /* 置中 */
+      padding: 20px; /* 內距 */
+      font-size: 14px; /* 字體大小 */
+    }
+
+    /* 響應式設計：螢幕寬度小於768px */
+    @media screen and (max-width: 768px) {
+      .box-container {
+        flex-direction: column; /* 改為垂直排列 */
+        align-items: center; /* 水平置中 */
+      }
+
+      .section-box {
+        width: 100%; /* 寬度全滿 */
+        max-width: 90%; /* 最大90%寬度 */
+      }
+
+      #google_translate_element {
+        position: static; /* 取消絕對定位 */
+        margin: 10px auto; /* 上下間距並置中 */
+        text-align: center; /* 文字置中 */
+      }
+    }
+  </style>
+</head>
+<body>
+
+ <div id="google_translate_element"></div> <!-- Google 翻譯按鈕的位置 -->
+
+  <!-- 頁首 Header -->
+  <header>
+    <div class="header-logo">
+      <h1 id="site-title">留學台灣指南</h1> <!-- 主標題 -->
+      <h2 id="site-subtitle">畢業後</h2> <!-- 副標題 -->
+    </div>
+  </header>
+
+  <!-- 主要內容容器，包含三個區塊 -->
+  <div class="box-container">
+    <!-- 區塊1：參加職業博覽會 -->
+    <div class="section-box">
+      <h2><span class="icon">🎓</span>參加職業博覽會</h2> <!-- 標題與圖示 -->
+      <p>職業博覽會是畢業生與雇主聯繫的重要平台：</p> <!-- 介紹 -->
+      <ul>
+        <li>國際處及學校常舉辦的職業博覽會，提供直接接觸雇主的機會。</li> <!-- 點1 -->
+        <li>參與這些活動不僅能了解各行業的需求，也能拓展人脈。</li> <!-- 點2 -->
+      </ul>
+    </div>
+
+    <!-- 區塊2：在可信網站上搜尋工作 -->
+    <div class="section-box">
+      <h2><span class="icon">💼</span>在可信網站上搜尋工作</h2>
+      <p>許多網站提供可靠的職業機會，您可以根據自身需求選擇合適的工作：</p>
+      <ul>
+        <li>最受歡迎的網站包括104人力銀行和1111人力銀行。</li>
+        <li>在這些平台上建立您的專業檔案，並上傳履歷，方便雇主查閱。</li>
+        <li>設置職位提醒，讓您能夠隨時掌握最新的工作機會。</li>
+      </ul>
+    </div>
+
+    <!-- 區塊3：建立專業人脈 -->
+    <div class="section-box">
+      <h2><span class="icon">🤝</span>建立專業人脈</h2>
+      <p>與業界專業人士建立聯繫，能為您未來的職業生涯打下基礎：</p>
+      <ul>
+        <li>參加職業博覽會或業界活動，主動與招聘人員和企業代表交流。</li>
+        <li>加入專業組織和社群，這有助於開闊視野和獲得最新的行業動態。</li>
+        <li>透過LinkedIn等社交平台擴展您的專業網絡。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 返回首頁按鈕 -->
+  <div class="button-grid">
+    <button class="back-button" onclick="window.location.href='main_page1.html'">返回首頁</button>
+  </div>
+
+  <!-- 頁腳 Footer -->
+  <footer>
+    <span>畢業論文所有</span> <!-- 版權或備註 -->
+  </footer>
+
+  <!-- Google 翻譯初始化 -->
+  <script src="translate.js"></script>
+  <!-- 載入 Google 翻譯插件 -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <

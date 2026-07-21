@@ -1,0 +1,181 @@
+<!DOCTYPE html> <!-- 宣告文件類型為 HTML5 -->
+<html lang="zh-Hant"> <!-- 網頁語言設定為繁體中文 -->
+<head>
+  <meta charset="UTF-8"> <!-- 設定字元編碼為 UTF-8 -->
+  <title>學校行事曆及校園地圖</title> <!-- 頁面標題，會顯示在瀏覽器標籤上 -->
+  <style>
+    body { 
+      font-family: 'Segoe UI', sans-serif; /* 設定整體字體 */
+      margin: 0; /* 移除瀏覽器預設的頁面外距 */
+      background-color: #e6f0ff; /* 設定頁面背景顏色為淡藍色 */
+    }
+
+    header {
+      background-color: #002855; /* 頁首背景顏色深藍 */
+      padding: 20px; /* 內距20像素 */
+      display: flex; /* 使用彈性盒模型 */
+      justify-content: space-between; /* 水平兩端對齊 */
+      align-items: center; /* 垂直置中對齊 */
+    }
+
+    .left-header h1 {
+      margin: 0; /* 移除標題外距 */
+      font-size: 24px; /* 字體大小24px */
+      color: #ffffff; /* 文字白色 */
+    }
+
+    .left-header h2 {
+      margin: 5px 0 0 0; /* 上方外距5px，其他為0 */
+      font-size: 16px; /* 字體大小16px */
+      color: #a3cfff; /* 淺藍色文字 */
+    }
+
+    /* Google Translate 插件樣式 - 固定在右上角 */
+    #google_translate_element {
+      position: absolute; /* 絕對定位 */
+      top: 20px; /* 距離頁面頂端20像素 */
+      right: 20px; /* 距離頁面右側20像素 */
+      z-index: 1000; /* 堆疊順序高，確保不被遮蓋 */
+      padding: 5px 10px; /* 內距上下5px，左右10px */
+      font-size: 14px; /* 字體大小14px */
+      border-radius: 5px; /* 圓角5px */
+      border: 1px solid #004080; /* 藍色邊框 */
+      background-color: #ffffff; /* 背景白色 */
+      color: #002855; /* 文字深藍色 */
+    }
+
+    main {
+      padding: 30px; /* 內容區塊內距30px */
+      max-width: 800px; /* 最大寬度800px */
+      margin: 0 auto; /* 左右置中 */
+    }
+
+    .category {
+      background-color: #d9e6ff; /* 淺藍背景 */
+      border: 2px solid #004080; /* 藍色邊框，寬度2px */
+      border-radius: 12px; /* 圓角12px */
+      margin-bottom: 20px; /* 底部外距20px */
+      overflow: hidden; /* 內容溢出隱藏 */
+    }
+
+    .category h4 {
+      font-size: 20px; /* 標題字體大小20px */
+      margin: 0; /* 移除外距 */
+      padding: 10px; /* 內距10px */
+      color: white; /* 文字白色 */
+      background-color: #0059b3; /* 藍色背景 */
+      cursor: pointer; /* 滑鼠樣式為可點擊手指 */
+      text-align: left; /* 文字靠左 */
+      border-left: 5px solid #003366; /* 左側有5px深藍色實線邊框 */
+      font-weight: bold; /* 粗體字 */
+      display: flex; /* 使用彈性盒模型 */
+      justify-content: space-between; /* 水平兩端對齊 */
+      align-items: center; /* 垂直置中 */
+    }
+
+    .category h4 i {
+      margin-left: 10px; /* 左邊外距10px */
+      font-size: 22px; /* 字體大小22px */
+    }
+
+    footer {
+      text-align: center; /* 文字置中 */
+      padding: 20px; /* 內距20px */
+      font-size: 14px; /* 字體大小14px */
+      color: #ffffff; /* 文字白色 */
+      background-color: #002855; /* 深藍背景 */
+    }
+
+    .button-grid {
+      display: flex; /* 彈性盒模型 */
+      flex-wrap: wrap; /* 多行換行排列 */
+      gap: 15px; /* 元素間距15px */
+      padding: 15px; /* 內距15px */
+      justify-content: center; /* 水平置中 */
+    }
+
+    .cute-button {
+      background-color: #004080; /* 深藍背景 */
+      border: 4px solid #ffffff; /* 白色粗邊框 */
+      border-radius: 20px; /* 圓角20px */
+      padding: 18px 30px; /* 上下18px，左右30px內距 */
+      font-size: 18px; /* 字體大小18px */
+      font-weight: bold; /* 粗體 */
+      color: #ffffff; /* 白色文字 */
+      cursor: pointer; /* 手型游標 */
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* 變化動畫 */
+      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.4), /* 盒陰影 */
+                  inset 0 -4px 0 rgba(0, 0, 0, 0.2); /* 內陰影 */
+      text-shadow: 0 1px 2px #000; /* 文字陰影 */
+    }
+
+    .cute-button:hover {
+      background-color: #0059b3; /* 滑鼠懸停時變更背景色 */
+      transform: translateY(-2px); /* 上移2像素 */
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5), /* 加強陰影 */
+                  inset 0 -4px 0 rgba(0, 0, 0, 0.3); /* 內陰影加深 */
+    }
+
+    .back-button {
+      margin-top: 20px; /* 上方外距20px */
+      padding: 15px 30px; /* 內距上下15px，左右30px */
+      font-size: 18px; /* 字體大小18px */
+      background-color: white; /* 背景白色 */
+      color: #002855; /* 文字深藍 */
+      border-radius: 10px; /* 圓角10px */
+      cursor: pointer; /* 手型游標 */
+      border: none; /* 無邊框 */
+      transition: background-color 0.2s; /* 背景色變化動畫 */
+    }
+
+    .back-button:hover {
+      background-color: #e6f0ff; /* 滑鼠懸停時背景淺藍 */
+    }
+  </style>
+</head>
+<body>
+  <!-- Google 翻譯插件容器 -->
+  <div id="google_translate_element"></div>
+  
+  <header>
+    <div class="left-header">
+      <h1 id="site-title">留學台灣指南</h1> <!-- 主標題 -->
+      <h2 id="site-subtitle">學校行事曆及校園地圖</h2> <!-- 副標題 -->
+    </div>
+  </header>
+
+  <main>
+    <section class="category">
+      <h4 id="calendar-title">學校行事曆</h4> <!-- 第一區塊標題 -->
+      <div class="button-grid">
+        <button class="cute-button" id="btn-calendar"> <!-- 按鈕 -->
+          <a href="https://www.must.edu.tw/calendar.php" target="_blank" style="color: white; text-decoration: none;" id="calendar-link">點此查看學校行事曆</a> <!-- 連結到學校行事曆頁面 -->
+        </button>
+      </div>
+    </section>
+
+    <section class="category">
+      <h4 id="map-title">校園地圖</h4> <!-- 第二區塊標題 -->
+      <div class="button-grid">
+        <button class="cute-button" id="btn-map"> <!-- 按鈕 -->
+          <a href="https://admin.must.edu.tw/view/content.aspx?UnitID=96&id=3601&tp=content" target="_blank" style="color: white; text-decoration: none;" id="map-link">點此查看校園地圖</a> <!-- 連結到校園地圖頁面 -->
+        </button>
+      </div>
+    </section>
+
+    <!-- 返回首頁按鈕區塊 -->
+    <div class="button-grid">
+      <button class="back-button" id="back-home-button" onclick="window.location.href='main_page1.html'">返回首頁</button> <!-- 點擊跳轉回主頁 -->
+    </div>
+  </main>
+
+  <footer>
+    <span>畢業論文所有</span> <!-- 頁腳文字 -->
+  </footer>
+
+ <!-- Google 翻譯初始化 -->
+  <script src="translate.js"></script>
+  <!-- 載入 Google 翻譯插件 -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

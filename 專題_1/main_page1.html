@@ -1,0 +1,220 @@
+<!DOCTYPE html> <!-- 定義文件類型為 HTML5 -->
+<html lang="zh-Hant"> <!-- 設定文件語言為繁體中文 -->
+<head>
+  <meta charset="UTF-8"> <!-- 設定網頁編碼為 UTF-8 -->
+  <title>留學台灣指南</title> <!-- 網頁標題 -->
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif; /* 字型設定 */
+      margin: 0; /* 取消預設外邊距 */
+      background-color: #e6f0ff; /* 頁面背景色 */
+    }
+
+    header {
+      background-color: #002855; /* 頁首背景色 */
+      padding: 20px; /* 內邊距 */
+      display: flex; /* 使用彈性盒子排列 */
+      justify-content: space-between; /* 兩端對齊 */
+      align-items: center; /* 垂直置中 */
+    }
+
+    .left-header h1 {
+      margin: 0; /* 取消標題外距 */
+      font-size: 24px; /* 字體大小 */
+      color: #ffffff; /* 字體顏色 */
+    }
+
+    .left-header h2 {
+      margin: 5px 0 0 0; /* 上方間距5px，其他為0 */
+      font-size: 16px; /* 字體大小 */
+      color: #a3cfff; /* 淡藍色字體 */
+    }
+
+    /* Google Translate 插件樣式 - 右上角 */
+    #google_translate_element {
+      position: absolute; /* 絕對定位 */
+      top: 20px; /* 頂端距離20px */
+      right: 20px; /* 右側距離20px */
+      z-index: 1000; /* 堆疊順序，確保在最上層 */
+      padding: 5px 10px; /* 內邊距 */
+      font-size: 14px; /* 字體大小 */
+      border-radius: 5px; /* 圓角 */
+      border: 1px solid #004080; /* 邊框 */
+      background-color: #ffffff; /* 背景白色 */
+      color: #002855; /* 字體顏色 */
+    }
+
+    main {
+      padding: 0px; /* 內邊距 */
+      max-width: 800px; /* 最大寬度 */
+      margin: 0 auto; /* 水平置中 */
+    }
+
+    .category {
+      background-color: #d9e6ff; /* 淺藍背景 */
+      border: 2px solid #004080; /* 深藍邊框 */
+      border-radius: 12px; /* 圓角 */
+      margin-bottom: 20px; /* 底部外距 */
+      overflow: hidden; /* 隱藏超出部分 */
+    }
+
+    .category h4 {
+      font-size: 20px; /* 標題字體大小 */
+      margin: 0; /* 取消外距 */
+      padding: 10px; /* 內邊距 */
+      color: white; /* 白色字體 */
+      background-color: #0059b3; /* 藍色背景 */
+      cursor: pointer; /* 滑鼠變成手指 */
+      text-align: left; /* 左對齊 */
+      border-left: 5px solid #003366; /* 左邊框加粗 */
+      font-weight: bold; /* 粗體 */
+      display: flex; /* 彈性盒子排列 */
+      justify-content: space-between; /* 左右兩端對齊 */
+      align-items: center; /* 垂直置中 */
+    }
+
+    .category h4 i {
+      margin-left: 10px; /* 左側間距 */
+      font-size: 22px; /* 字體大小 */
+    }
+
+    .button-grid {
+      display: flex; /* 彈性盒子 */
+      flex-wrap: wrap; /* 換行 */
+      gap: 15px; /* 間距 */
+      padding: 15px; /* 內邊距 */
+      justify-content: center; /* 水平置中 */
+    }
+
+    .cute-button {
+      background-color: #004080; /* 按鈕背景色 */
+      border: 4px solid #ffffff; /* 白色邊框 */
+      border-radius: 20px; /* 圓角 */
+      padding: 18px 30px; /* 內邊距 */
+      font-size: 18px; /* 字體大小 */
+      font-weight: bold; /* 粗體 */
+      color: #ffffff; /* 白色字體 */
+      cursor: pointer; /* 滑鼠變成手指 */
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* 動畫效果 */
+      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.4),
+                  inset 0 -4px 0 rgba(0, 0, 0, 0.2); /* 陰影效果 */
+      text-shadow: 0 1px 2px #000; /* 文字陰影 */
+    }
+
+    .cute-button:hover {
+      background-color: #0059b3; /* 滑鼠懸停背景色 */
+      transform: translateY(-2px); /* 向上移動 */
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5),
+                  inset 0 -4px 0 rgba(0, 0, 0, 0.3); /* 更強陰影 */
+    }
+
+    footer {
+      text-align: center; /* 文字置中 */
+      padding: 20px; /* 內邊距 */
+      font-size: 14px; /* 字體大小 */
+      color: #ffffff; /* 白色字體 */
+      background-color: #002855; /* 頁尾背景色 */
+    }
+
+    .content {
+      padding: 10px; /* 內邊距 */
+      display: none; /* 預設不顯示 */
+      background-color: #e7f4ff; /* 背景色 */
+    }
+
+    .active .content {
+      display: block; /* active 狀態時顯示內容 */
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Translate 插件區塊 -->
+  <div id="google_translate_element"></div>
+
+
+  <header>
+    <div class="left-header">
+      <h1>留學台灣指南</h1> <!-- 主標題 -->
+      <h2>多語言平台</h2> <!-- 副標題 -->
+    </div>
+  </header>
+
+  <main>
+    <section class="about-section">
+      <h3>關於我們</h3> <!-- 小標題 -->
+      <p>
+       歡迎來到我們的網站。這是海外學生為畢業論文所合作完成的工作，旨在幫助你在抵達台灣後順利過渡。我們也曾是第一次出國唸書的學生，很能體會初來異地時的陌生。這經歷確實不容易，因此我們準備了這本小指南，希望能對你有所幫助。如果在瀏覽後有任何問題或建議，歡迎隨時告訴我們，我們會持續改進這個網站，讓內容更加完善。
+        <!-- 關於網站的介紹說明 -->
+      </p>
+    </section>
+
+    <div class="category">
+      <h4>🏫 入學前與學校資訊 <i class="arrow">▼</i></h4> <!-- 分類標題及箭頭圖示 -->
+      <div class="content">
+        <div class="button-grid">
+          <button class="cute-button" onclick="window.location.href='admission.html'">入學前</button> <!-- 連結至入學前資訊頁 -->
+          <button class="cute-button" onclick="window.location.href='calmaps.html'">學校行事曆及校園地圖</button> <!-- 校園地圖頁面 -->
+          <button class="cute-button" onclick="window.location.href='transport.html'">機場交通</button> <!-- 機場交通頁面 -->
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h4>📄 法律與行政 <i class="arrow">▼</i></h4>
+      <div class="content">
+        <div class="button-grid">
+          <button class="cute-button" onclick="window.location.href='arc1.html'">居留證</button>
+          <button class="cute-button" onclick="window.location.href='work_permit.html'">工作許可</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h4>💰 財務與銀行 <i class="arrow">▼</i></h4>
+      <div class="content">
+        <div class="button-grid">
+          <button class="cute-button" onclick="window.location.href='bank_acc.html'">銀行帳戶申請</button>
+          <button class="cute-button" onclick="window.location.href='bank_login.html'">登錄銀行帳號</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" onclick="window.location.href='after.html'">
+      <h4>🎓 畢業後 <i class="arrow">▼</i></h4> <!-- 點擊整個分類區塊跳轉頁面，箭頭顯示向右 -->
+    </div>
+
+    <div class="category">
+      <h4>📬 意見表單與常見問題 <i class="arrow">▼</i></h4>
+      <div class="content">
+        <div class="button-grid">
+          <button class="cute-button" onclick="window.location.href='suggestion.html'">意見表單</button>
+          <button class="cute-button" onclick="window.location.href='feedback_list.html'">常見問題</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>畢業論文所有</span> <!-- 頁尾文字 -->
+  </footer>
+
+  <!-- Google Translate script 初始化 -->
+  <script src="translate.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+  <!-- 折疊展開功能腳本 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { // 等待 DOM 載入完成
+      document.querySelectorAll('.category h4').forEach(header => { // 取得所有分類標題
+        header.addEventListener('click', function () { // 點擊事件
+          const parent = this.parentNode; // 取得分類區塊
+          parent.classList.toggle('active'); // 切換 active 類別，控制內容顯示
+          const arrow = this.querySelector('.arrow'); // 找箭頭圖示
+          if (arrow) arrow.textContent = parent.classList.contains('active') ? '▲' : '▼'; // 根據狀態改變箭頭方向
+        });
+      });
+    });
+  </script>
+</body>
+</html>

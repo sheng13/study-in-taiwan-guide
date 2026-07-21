@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>留學台灣指南 - 登入流程教學</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #e6f0ff;
+      color: #333;
+    }
+
+    /* Google Translate 插件樣式 */
+    #google_translate_element {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 5px 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #004080;
+      background-color: #ffffff;
+      color: #002855;
+    }
+
+    header {
+      background-color: #002855;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      position: relative;
+    }
+
+    .left-header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .left-header h2 {
+      margin: 5px 0 0 0;
+      font-size: 16px;
+      color: #a3cfff;
+    }
+
+    main {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .category {
+      background-color: #d9e6ff;
+      border: 2px solid #004080;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .category h4 {
+      font-size: 20px;
+      margin: 0;
+      padding: 10px;
+      color: white;
+      background-color: #0059b3;
+      text-align: left;
+      border-left: 5px solid #003366;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .content {
+      padding: 15px 20px;
+      background-color: #e7f4ff;
+      display: block; /* 直接顯示，不隱藏 */
+      line-height: 1.6;
+    }
+
+    ol {
+      margin-left: 20px;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #ffffff;
+      background-color: #002855;
+      margin-top: 40px;
+    }
+	/* 返回首頁按鈕樣式 */
+    .back-button {
+      padding: 15px 30px; /* 內邊距 */
+      font-size: 18px; /* 字體大小 */
+      background-color: white; /* 白色背景 */
+      color: #002855; /* 深藍字體 */
+      border-radius: 10px; /* 圓角 */
+      cursor: pointer; /* 游標變手指 */
+      border: none; /* 無邊框 */
+      transition: background-color 0.2s; /* 背景色漸變 */
+      display: block; /* 讓按鈕獨占一行 */
+      margin: 0 auto; /* 水平置中 */
+      max-width: 200px; /* 最大寬度 */
+      text-align: center; /* 文字置中 */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Translate 插件區塊 -->
+  <div id="google_translate_element"></div>
+
+  <header>
+    <div class="left-header">
+      <h1>留學台灣指南</h1>
+      <h2>多語言平台</h2>
+    </div>
+  </header>
+
+  <main>
+    <section class="category" id="category1">
+      <h4>郵局帳號登入流程</h4>
+      <div class="content">
+        <ol>
+          <li>使用者開啟郵局登入頁面。</li>
+          <li>在「帳號」欄位輸入郵局帳號。</li>
+          <li>在「密碼」欄位輸入密碼。</li>
+          <li>按下「登入」按鈕送出資料。</li>
+          <li>系統檢查輸入是否空白或格式正確（前端驗證）。</li>
+          <li>伺服器接收資料，進行帳號密碼比對。</li>
+          <li>驗證成功則登入，失敗則提示錯誤訊息。</li>
+          <li>登入成功後，使用者可進行郵件查詢、包裹寄送等操作。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="category" id="category2">
+      <h4>一般網上網站登入流程</h4>
+      <div class="content">
+        <ol>
+          <li>使用者透過瀏覽器開啟網站首頁。</li>
+          <li>點擊網站上的「登入」連結，進入登入頁面。</li>
+          <li>輸入帳號（電子郵件或使用者名稱）和密碼。</li>
+          <li>可能需要輸入驗證碼或進行雙重驗證。</li>
+          <li>按下「登入」按鈕。</li>
+          <li>系統驗證身份，成功則進入會員專區，失敗則顯示錯誤訊息。</li>
+          <li>若忘記密碼，可透過「忘記密碼」功能重設。</li>
+        </ol>
+      </div>
+    </section>
+	<div class="button-grid">
+      <button class="back-button" id="back-home-button" onclick="window.location.href='main_page1.html'">返回首頁</button>
+    </div>
+  </main>
+
+  <footer>
+    <span>畢業論文所有</span>
+  </footer>
+
+  <!-- Google Translate script 初始化 -->
+  <script src="translate.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

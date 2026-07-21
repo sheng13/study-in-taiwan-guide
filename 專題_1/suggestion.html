@@ -1,0 +1,215 @@
+<!DOCTYPE html> <!-- 宣告此文件為HTML5標準文件 -->
+<html lang="zh-Hant"> <!-- 設定語言為繁體中文 -->
+<head>
+  <meta charset="UTF-8" /> <!-- 設定頁面字元編碼為UTF-8 -->
+  <title>意見回饋 - 留學台灣指南</title> <!-- 網頁標題 -->
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif; /* 設定字體 */
+      margin: 0; /* 清除瀏覽器預設邊距 */
+      background-color: #e6f0ff; /* 頁面背景顏色 */
+    }
+
+    header {
+      background-color: #002855; /* 頁首背景色 */
+      padding: 20px; /* 內距 */
+      display: flex; /* 使用flex排版 */
+      justify-content: space-between; /* 左右兩邊元素間距平均分配 */
+      align-items: center; /* 垂直置中 */
+    }
+
+    .left-header h1 {
+      margin: 0; /* 清除外距 */
+      font-size: 24px; /* 字體大小 */
+      color: #ffffff; /* 白色字體 */
+    }
+
+    .left-header h2 {
+      margin: 5px 0 0 0; /* 上方5px外距，其他為0 */
+      font-size: 16px; /* 字體大小 */
+      color: #a3cfff; /* 淺藍色字體 */
+    }
+
+    /* Google Translate 插件樣式 - 右上角 */
+    #google_translate_element {
+      position: absolute; /* 絕對定位 */
+      top: 20px; /* 距離上方20px */
+      right: 20px; /* 距離右方20px */
+      z-index: 1000; /* 置於最上層 */
+      padding: 5px 10px; /* 內距 */
+      font-size: 14px; /* 字體大小 */
+      border-radius: 5px; /* 邊角圓弧 */
+      border: 1px solid #004080; /* 邊框 */
+      background-color: #ffffff; /* 背景白色 */
+      color: #002855; /* 文字顏色 */
+    }
+
+    .container {
+      max-width: 700px; /* 最大寬度700px */
+      margin: 40px auto; /* 上下外距40px，左右置中 */
+      background-color: #fff; /* 白色背景 */
+      padding: 30px; /* 內距 */
+      border-radius: 12px; /* 圓角 */
+      box-shadow: 0 0 12px rgba(0,0,0,0.1); /* 輕微陰影 */
+      position: relative; /* 相對定位 */
+    }
+
+    h1 {
+      text-align: center; /* 文字置中 */
+      color: #002855; /* 深藍色字體 */
+      margin-bottom: 20px; /* 底部外距 */
+    }
+
+    label {
+      display: block; /* 轉為區塊元素 */
+      margin-top: 15px; /* 頂部外距 */
+      color: #004080; /* 藍色字體 */
+      font-weight: 600; /* 半粗體 */
+    }
+
+    input, textarea {
+      width: 100%; /* 寬度100% */
+      padding: 10px; /* 內距 */
+      margin-top: 5px; /* 頂部外距 */
+      border-radius: 6px; /* 圓角 */
+      border: 1px solid #ccc; /* 灰色邊框 */
+      box-sizing: border-box; /* 包含邊框與內距在寬度內 */
+      font-size: 16px; /* 字體大小 */
+      font-family: 'Segoe UI', sans-serif; /* 字體 */
+      color: #003366; /* 深藍色文字 */
+    }
+
+    button {
+      margin-top: 20px; /* 頂部外距 */
+      padding: 18px 30px; /* 內距上下18px，左右30px */
+      background-color: #004080; /* 背景深藍色 */
+      border: 4px solid #ffffff; /* 白色邊框 */
+      border-radius: 20px; /* 圓角 */
+      font-size: 18px; /* 字體大小 */
+      font-weight: bold; /* 粗體 */
+      color: #ffffff; /* 文字白色 */
+      cursor: pointer; /* 滑鼠變手指 */
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* 平滑動畫 */
+      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.4), /* 外陰影 */
+                  inset 0 -4px 0 rgba(0, 0, 0, 0.2); /* 內陰影 */
+      text-shadow: 0 1px 2px #000; /* 文字陰影 */
+    }
+
+    button:hover {
+      background-color: #0059b3; /* 滑鼠移入改色 */
+      transform: translateY(-2px); /* 按鈕上移 */
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5), /* 更強陰影 */
+                  inset 0 -4px 0 rgba(0, 0, 0, 0.3); /* 內陰影 */
+    }
+
+    .link-to-list {
+      margin-top: 30px; /* 頂部外距 */
+      text-align: center; /* 文字置中 */
+    }
+
+    .link-to-list a {
+      color: #004080; /* 藍色文字 */
+      font-weight: bold; /* 粗體 */
+      text-decoration: none; /* 無底線 */
+      font-size: 18px; /* 字體大小 */
+    }
+
+   footer {
+      background-color: #002855; /* 深藍背景 */
+      color: #ffffff; /* 白色字體 */
+      text-align: center; /* 文字置中 */
+      padding: 15px 10px; /* 內距 */
+      font-size: 14px; /* 字體大小 */
+      user-select: none; /* 禁止文字被選取 */
+    }
+   /* 返回首頁按鈕樣式 */
+    .back-button {
+      padding: 15px 30px; /* 內邊距 */
+      font-size: 18px; /* 字體大小 */
+      background-color: white; /* 白色背景 */
+      color: #002855; /* 深藍字體 */
+      border-radius: 10px; /* 圓角 */
+      cursor: pointer; /* 游標變手指 */
+      border: none; /* 無邊框 */
+      transition: background-color 0.2s; /* 背景色漸變 */
+      display: block; /* 讓按鈕獨占一行 */
+      margin: 0 auto; /* 水平置中 */
+      max-width: 200px; /* 最大寬度 */
+      text-align: center; /* 文字置中 */
+    }
+    /* 按鈕懸停效果 */
+    .back-button:hover {
+      background-color: #e6f0ff; /* 淺藍背景 */
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left-header">
+      <h1>留學台灣指南</h1> <!-- 網站主標題 -->
+      <h2>意見回饋頁面</h2> <!-- 頁面副標題 -->
+    </div>
+    <div id="google_translate_element"></div> <!-- Google翻譯插件容器 -->
+  </header>
+
+  <div class="container">
+    <h1>意見回饋表單</h1> <!-- 表單標題 -->
+
+    <form id="feedback-form"> <!-- 意見回饋表單開始 -->
+      <label for="name">姓名</label> <!-- 姓名欄位標籤 -->
+      <input type="text" id="name" name="name" required /> <!-- 姓名輸入框，必填 -->
+
+      <label for="message">您的意見</label> <!-- 意見欄位標籤 -->
+      <textarea id="message" name="message" rows="6" required></textarea> <!-- 意見輸入框，必填 -->
+
+      <button type="submit">送出意見</button> <!-- 送出按鈕 -->
+    </form>
+
+    <div class="link-to-list">
+      <a href="feedback_list.html" target="_blank">查看大家的意見</a> <!-- 連結到意見列表頁面，另開新分頁 -->
+    </div>
+  </div>
+  <!-- 返回首頁按鈕 -->
+    <button class="back-button" id="back-home-button" onclick="window.location.href='main_page1.html'">
+      返回首頁
+    </button>
+  <footer>
+    © 2025 留學台灣指南，版權所有 <!-- 頁腳版權資訊 -->
+  </footer>
+  <!-- Google 翻譯初始化 -->
+  <script src="translate.js"></script>
+  <!-- 載入 Google 翻譯插件 -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    // 防止XSS攻擊的HTML字串轉義函數
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;")  // & 轉成 &amp;
+                 .replace(/</g, "&lt;")   // < 轉成 &lt;
+                 .replace(/>/g, "&gt;")   // > 轉成 &gt;
+                 .replace(/"/g, "&quot;") // " 轉成 &quot;
+                 .replace(/'/g, "&#039;"); // ' 轉成 &#039;
+    }
+
+    // 新增意見到 localStorage (本地儲存)
+    function addFeedback(name, message) {
+      const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || []; // 讀取舊有意見陣列，無則空陣列
+      feedbacks.push({ name, message }); // 新增新的意見物件
+      localStorage.setItem('feedbacks', JSON.stringify(feedbacks)); // 重新存回localStorage
+    }
+
+    // 表單送出事件監聽
+    document.getElementById('feedback-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // 防止表單預設送出行為（頁面重整）
+      const name = this.name.value.trim(); // 取得並去除姓名前後空白
+      const message = this.message.value.trim(); // 取得並去除意見前後空白
+      if (name && message) { // 若兩者皆有值
+        addFeedback(name, message); // 新增意見到localStorage
+        alert('感謝你給的建議！'); // 跳出感謝訊息
+        this.reset(); // 重設表單欄位
+      }
+    });
+  </script>
+</body>
+</html>

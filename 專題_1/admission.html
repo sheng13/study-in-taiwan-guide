@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><!-- 設定網頁語言為繁體中文 -->
+<head>
+  <meta charset="UTF-8" /><!-- 編碼設定為 UTF-8 -->
+  <title>入學信息</title><!-- 頁面標題 -->
+  <style>
+    /* body 樣式設定 */
+    body {
+      font-family: 'Segoe UI', sans-serif; /* 字體設定 */
+      margin: 0; /* 取消預設外邊距 */
+      background-color: #e6f0ff; /* 背景淺藍色 */
+    }
+    /* header 樣式 */
+    header {
+      background-color: #002855; /* 深藍色背景 */
+      padding: 20px; /* 內邊距 */
+      display: flex; /* 使用 flex 置中排版 */
+      justify-content: space-between; /* 左右分散排列 */
+      align-items: center; /* 垂直置中 */
+      position: relative; /* 為 Google 翻譯定位準備 */
+    }
+    /* logo 主標題 */
+    .header-logo h1 {
+      margin: 0; /* 取消外邊距 */
+      font-size: 24px; /* 文字大小 */
+      color: #ffffff; /* 白色字體 */
+    }
+    /* logo 副標題 */
+    .header-logo h2 {
+      margin: 5px 0 0 0; /* 上方5px間距，其他0 */
+      font-size: 16px; /* 較小字體 */
+      color: #a3cfff; /* 淺藍色文字 */
+    }
+    /* Google Translate 插件容器樣式 */
+    #google_translate_element {
+      position: absolute; /* 絕對定位 */
+      top: 20px; /* 距離頂部20px */
+      right: 20px; /* 距離右側20px */
+      z-index: 1000; /* 置頂 */
+      padding: 5px 10px; /* 內邊距 */
+      font-size: 14px; /* 字體大小 */
+      border-radius: 5px; /* 圓角 */
+      border: 1px solid #004080; /* 深藍色邊框 */
+      background-color: #ffffff; /* 白色背景 */
+      color: #002855; /* 深藍字色 */
+    }
+    /* 主要內容區域 */
+    main {
+      padding: 30px; /* 內邊距 */
+      max-width: 800px; /* 最大寬度800px */
+      margin: 0 auto; /* 水平置中 */
+    }
+    /* 容器取消 flex，改為區塊上下排列 */
+    .box-container {
+      margin-top: 30px; /* 頂部空間 */
+    }
+    /* 區塊樣式，寬度100% */
+    .section-box {
+      width: 100%; /* 寬度滿版 */
+      padding: 20px; /* 內邊距 */
+      border: 3px solid #004080; /* 深藍邊框 */
+      border-radius: 12px; /* 圓角 */
+      background-color: #d9e6ff; /* 淺藍背景 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 陰影 */
+      margin-bottom: 30px; /* 區塊間距 */
+    }
+    /* 區塊標題 */
+    .section-box h2 {
+      font-size: 20px; /* 字體大小 */
+      color: #0059b3; /* 藍色文字 */
+      font-weight: bold; /* 粗體 */
+      display: flex; /* 使用 flex 排版 */
+      align-items: center; /* 垂直置中 */
+      margin-bottom: 10px; /* 下方間距 */
+    }
+    /* 標題裡的圖示 */
+    .section-box h2 .icon {
+      margin-right: 10px; /* 右邊距 */
+      font-size: 24px; /* 圖示字體大小 */
+    }
+    /* 區塊內段落 */
+    .section-box p {
+      margin-bottom: 10px; /* 下方間距 */
+      line-height: 1.5; /* 行高 */
+    }
+    /* 去除清單預設樣式 */
+    .section-box ul {
+      list-style: none; /* 無項目符號 */
+      padding-left: 0; /* 左邊內距移除 */
+    }
+    /* 清單項目間距 */
+    .section-box ul li {
+      margin-bottom: 8px; /* 下方間距 */
+    }
+    /* 超連結樣式 */
+    a {
+      color: #004080; /* 深藍色文字 */
+      text-decoration: underline; /* 底線 */
+    }
+    /* 滑鼠滑過超連結變色 */
+    a:hover {
+      color: #002855; /* 更深藍色 */
+    }
+    /* 返回首頁按鈕樣式 */
+    .back-button {
+      padding: 15px 30px; /* 內邊距 */
+      font-size: 18px; /* 字體大小 */
+      background-color: white; /* 白色背景 */
+      color: #002855; /* 深藍字體 */
+      border-radius: 10px; /* 圓角 */
+      cursor: pointer; /* 游標變手指 */
+      border: none; /* 無邊框 */
+      transition: background-color 0.2s; /* 背景色漸變 */
+      display: block; /* 讓按鈕獨占一行 */
+      margin: 0 auto; /* 水平置中 */
+      max-width: 200px; /* 最大寬度 */
+      text-align: center; /* 文字置中 */
+    }
+    /* 按鈕懸停效果 */
+    .back-button:hover {
+      background-color: #e6f0ff; /* 淺藍背景 */
+    }
+    /* 頁腳區域 */
+    footer {
+      text-align: center; /* 文字置中 */
+      padding: 20px; /* 內邊距 */
+      font-size: 14px; /* 字體大小 */
+      color: #ffffff; /* 白色文字 */
+      background-color: #002855; /* 深藍背景 */
+      margin-top: 40px; /* 上方空間 */
+    }
+  </style>
+</head>
+<body>
+
+  <div id="google_translate_element"></div> <!-- Google 翻譯按鈕的位置 -->
+
+  <!-- 頁首 Header -->
+  <header>
+    <div class="header-logo">
+      <h1 id="site-title">留學台灣指南</h1><!-- 主標題 -->
+      <h2 id="site-subtitle">入學信息</h2><!-- 副標題 -->
+    </div>
+  </header>
+
+  <!-- 主要內容 -->
+  <main>
+    <div class="box-container"><!-- 容器，放置所有區塊 -->
+      <!-- 居留證區塊 -->
+      <div class="section-box">
+        <h2 id="residence-visa-title">
+          <span class="icon">🛂</span><!-- 圖示 -->
+          居留證
+        </h2>
+        <p id="residence-visa-desc">
+          作為來台的海外學生，您需要在抵達台灣後30天內申請外僑居留證（ARC）。
+        </p>
+        <p><strong id="important-notes">重要提醒：</strong></p>
+        <ul>
+          <li id="late-application">如果您未在30天內申請，可能會被罰款，罰金金額介於新台幣2,000元至10,000元之間。</li>
+          <li id="apply-online">
+            您可以透過國家移民署的學生線上申請系統來申請。
+            <a href="https://niaspeedy.immigration.gov.tw/nia_southeast/student_apply.html" target="_blank" rel="noopener noreferrer" id="click-here-link">
+              點此了解更多詳情
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 學生證區塊 -->
+      <div class="section-box">
+        <h2 id="student-id-title">
+          <span class="icon">🎓</span><!-- 圖示 -->
+          學生證
+        </h2>
+        <p id="student-id-desc">您的學生證將會在您報到時或透過電子郵件發送給您。</p>
+        <p id="student-id-info">您需要學生證來進入「學生資訊系統」，您可以在那裡管理選課、學費資訊、宿舍申請等重要事宜。</p>
+      </div>
+
+      <!-- 住宿區塊 -->
+      <div class="section-box">
+        <h2 id="accommodation-title">
+          <span class="icon">🏠</span><!-- 圖示 -->
+          住宿
+        </h2>
+        <p id="accommodation-desc">
+          如要申請住宿，請前往
+          <a href="https://mustwebsystem.must.edu.tw/muststdsystem/" target="_blank" rel="noopener noreferrer" id="accommodation-link">
+            學校住宿網站
+          </a>
+          並填寫您的個人資訊。
+        </p>
+        <p id="off-campus-info">
+          如果您想要尋找校外住宿，建議您可以參考像是
+          <a href="https://www.591.com.tw" target="_blank" rel="noopener noreferrer" id="off-campus-link">
+            591網站
+          </a>
+          來尋找住房選項。
+        </p>
+      </div>
+    </div>
+
+    <!-- 返回首頁按鈕 -->
+    <button class="back-button" id="back-home-button" onclick="window.location.href='main_page1.html'">
+      返回首頁
+    </button>
+  </main>
+
+  <!-- 頁腳 -->
+  <footer>
+    <span id="footer-text">畢業論文所有</span>
+  </footer>
+
+ <!-- Google 翻譯初始化 -->
+  <script src="translate.js"></script>
+  <!-- 載入 Google 翻譯插件 -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

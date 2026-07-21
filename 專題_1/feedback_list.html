@@ -1,0 +1,171 @@
+<!DOCTYPE html> <!-- 宣告文件類型為 HTML5 -->
+<html lang="zh-Hant"> <!-- 設定語言為繁體中文 -->
+<head>
+  <meta charset="UTF-8" /> <!-- 設定字元編碼為 UTF-8 -->
+  <title>大家的意見 - 留學台灣指南</title> <!-- 頁面標題 -->
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif; /* 字體設置 */
+      margin: 0; /* 頁面邊距清零 */
+      background-color: #e6f0ff; /* 背景色為淺藍色 */
+      display: flex; /* 使用彈性盒模型 */
+      flex-direction: column; /* 方向為垂直排列 */
+      min-height: 100vh; /* 最小高度為視窗高度，讓 footer 可置底 */
+    }
+
+    header {
+      background-color: #002855; /* 深藍色背景 */
+      padding: 20px; /* 內距 */
+      display: flex; /* 彈性盒模型 */
+      justify-content: space-between; /* 子元素左右分散 */
+      align-items: center; /* 垂直置中 */
+    }
+
+    .left-header h1 {
+      margin: 0; /* 標題無外邊距 */
+      font-size: 24px; /* 字體大小 */
+      color: #ffffff; /* 白色字體 */
+    }
+
+    .left-header h2 {
+      margin: 5px 0 0 0; /* 上方外距5px，其他為0 */
+      font-size: 16px; /* 字體大小 */
+      color: #a3cfff; /* 淺藍色字體 */
+    }
+
+    /* Google Translate 插件樣式 - 右上角 */
+    #google_translate_element {
+      position: absolute; /* 絕對定位 */
+      top: 20px; /* 距離上方20px */
+      right: 20px; /* 距離右方20px */
+      z-index: 1000; /* 確保置頂 */
+      padding: 5px 10px; /* 內距 */
+      font-size: 14px; /* 字體大小 */
+      border-radius: 5px; /* 邊角圓弧 */
+      border: 1px solid #004080; /* 邊框顏色 */
+      background-color: #ffffff; /* 背景白色 */
+      color: #002855; /* 字體深藍色 */
+    }
+
+    .container {
+      max-width: 700px; /* 最大寬度700px */
+      margin: 40px auto; /* 上下外距40px，水平置中 */
+      background-color: #fff; /* 白色背景 */
+      padding: 30px; /* 內距 */
+      border-radius: 12px; /* 邊角圓弧 */
+      box-shadow: 0 0 12px rgba(0,0,0,0.1); /* 投影效果 */
+      position: relative; /* 相對定位 */
+      flex-grow: 1; /* 填滿剩餘垂直空間，讓 footer 在底部 */
+    }
+
+    h1 {
+      text-align: center; /* 文字置中 */
+      color: #002855; /* 字體深藍色 */
+      margin-bottom: 20px; /* 下方外距20px */
+    }
+
+    .feedback-item {
+      background-color: #d9e6ff; /* 淺藍背景 */
+      border: 2px solid #004080; /* 深藍邊框 */
+      border-radius: 12px; /* 邊角圓弧 */
+      padding: 15px; /* 內距 */
+      margin-bottom: 15px; /* 下方外距15px */
+      color: #003366; /* 字體顏色 */
+      font-weight: 600; /* 半粗體 */
+    }
+
+    .feedback-item strong {
+      display: block; /* 區塊顯示 */
+      margin-bottom: 8px; /* 下方外距8px */
+      font-size: 18px; /* 字體大小 */
+      color: #002855; /* 字體深藍色 */
+    }
+
+    p {
+      margin: 0; /* 無外距 */
+      font-weight: normal; /* 常規字重 */
+      font-size: 16px; /* 字體大小 */
+      color: #003366; /* 字體顏色 */
+      white-space: pre-wrap; /* 保留空白與換行 */
+    }
+
+    .back-button {
+      padding: 15px 30px; /* 內邊距 */
+      font-size: 18px; /* 字體大小 */
+      background-color: white; /* 白色背景 */
+      color: #002855; /* 深藍字體 */
+      border-radius: 10px; /* 圓角 */
+      cursor: pointer; /* 游標變手指 */
+      border: none; /* 無邊框 */
+      transition: background-color 0.2s; /* 背景色漸變 */
+      display: block; /* 讓按鈕獨占一行 */
+      margin: 0 auto; /* 水平置中 */
+      max-width: 200px; /* 最大寬度 */
+      text-align: center; /* 文字置中 */
+    }
+    /* 按鈕懸停效果 */
+    .back-button:hover {
+      background-color: #e6f0ff; /* 淺藍背景 */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left-header">
+      <h1>留學台灣指南</h1> <!-- 主標題 -->
+      <h2>大家的意見</h2> <!-- 副標題 -->
+    </div>
+    <div id="google_translate_element"></div> <!-- Google 翻譯插件放置區 -->
+  </header>
+
+  <div class="container">
+    <h1>大家的意見</h1> <!-- 內容區標題 -->
+    <div id="feedback-list">
+      <!-- 意見將顯示於此 -->
+    </div>
+  </div>
+<!-- 返回首頁按鈕區塊 -->
+    <div class="button-grid">
+      <button class="back-button" id="back-home-button" onclick="window.location.href='main_page1.html'">返回首頁</button> <!-- 點擊跳轉回主頁 -->
+    </div>
+  <footer>
+   <span>畢業論文所有</span> <!-- 頁尾版權宣告 -->
+  </footer>
+
+  <!-- Google 翻譯初始化 -->
+  <script src="translate.js"></script>
+  <!-- 載入 Google 翻譯插件 -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    // 用來避免 HTML 注入攻擊，將文字特殊符號轉義
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+    }
+
+    // 從 localStorage 載入並顯示意見列表
+    function loadFeedback() {
+      const feedbackList = document.getElementById('feedback-list'); // 取得容器
+      const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || []; // 從 localStorage 讀取並解析 JSON，若無則空陣列
+      if (feedbacks.length === 0) {
+        feedbackList.innerHTML = '<p>目前還沒有意見喔！</p>'; // 沒有意見時顯示提示
+        return;
+      }
+      feedbackList.innerHTML = ''; // 清空內容
+      feedbacks.forEach(item => {
+        const div = document.createElement('div'); // 建立新的 div 元素
+        div.className = 'feedback-item'; // 加入樣式類別
+        // 使用 escapeHtml 防止 XSS，動態插入使用者名稱與留言
+        div.innerHTML = `<strong>${escapeHtml(item.name)}</strong><p>${escapeHtml(item.message)}</p>`;
+        feedbackList.appendChild(div); // 新增到頁面中
+      });
+    }
+
+    loadFeedback(); // 載入並顯示意見
+  </script>
+</body>
+</html>

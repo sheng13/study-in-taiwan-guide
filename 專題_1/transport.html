@@ -1,0 +1,287 @@
+<!DOCTYPE html> <!-- 宣告文件類型為 HTML5 -->
+<html lang="zh-Hant"> <!-- HTML 文件開始，語言設定為繁體中文 -->
+<head>
+  <meta charset="UTF-8" /> <!-- 設定網頁使用 UTF-8 編碼 -->
+  <title>留學台灣指南 - 機場交通</title> <!-- 設定網頁標題 -->
+  <style>
+    /* 以下是 CSS 樣式設定 */
+
+    body {
+      font-family: 'Segoe UI', sans-serif; /* 設定字體 */
+      margin: 0; /* 移除預設邊距 */
+      background-color: #e6f0ff; /* 背景顏色為淡藍色 */
+      color: #003366; /* 文字顏色為深藍 */
+    }
+
+    header {
+      background-color: #002855; /* 頁首背景顏色為深藍 */
+      padding: 20px; /* 內距 20px */
+      display: flex; /* 使用 Flexbox 排版 */
+      justify-content: space-between; /* 兩端對齊 */
+      align-items: center; /* 垂直置中對齊 */
+    }
+
+    .left-header h1 {
+      margin: 0; /* 無外距 */
+      font-size: 24px; /* 字體大小 */
+      color: #ffffff; /* 白色文字 */
+    }
+
+    .left-header h2 {
+      margin: 5px 0 0 0; /* 上方 5px，其餘為 0 */
+      font-size: 16px; /* 字體大小 */
+      color: #a3cfff; /* 淺藍文字 */
+    }
+
+    main {
+      padding: 30px; /* 內距 */
+      max-width: 800px; /* 最大寬度為 800px */
+      margin: 0 auto; /* 水平置中 */
+    }
+
+    footer {
+      text-align: center; /* 文字置中 */
+      padding: 20px; /* 內距 */
+      font-size: 14px; /* 字體大小 */
+      color: #ffffff; /* 白色文字 */
+      background-color: #002855; /* 深藍背景 */
+      margin-top: 40px; /* 與上方區塊距離 40px */
+    }
+
+    h2.route-title {
+      color: #004080; /* 深藍色標題 */
+      margin-bottom: 20px; /* 下方間距 */
+      border-left: 5px solid #004080; /* 左側加上藍色線條 */
+      padding-left: 10px; /* 左側內距 */
+      font-weight: bold; /* 粗體 */
+    }
+
+    .route-container {
+      background-color: #d9e6ff; /* 淺藍背景 */
+      border: 2px solid #004080; /* 外框為深藍色 */
+      border-radius: 12px; /* 圓角 */
+      padding: 20px; /* 內距 */
+      margin-bottom: 25px; /* 區塊間距 */
+      box-shadow: 0 3px 8px rgba(0, 64, 128, 0.3); /* 陰影效果 */
+    }
+
+    .route-header {
+      display: flex; /* 使用 Flexbox */
+      align-items: center; /* 垂直置中 */
+      gap: 10px; /* 元素間距 */
+      font-weight: bold; /* 粗體 */
+      font-size: 18px; /* 字體大小 */
+      color: #0059b3; /* 深藍字色 */
+      margin-bottom: 15px; /* 下方間距 */
+    }
+
+    .tag {
+      background-color: #004080; /* 深藍背景 */
+      color: white; /* 白色文字 */
+      padding: 4px 12px; /* 內距 */
+      border-radius: 20px; /* 圓角標籤 */
+      font-weight: bold; /* 粗體 */
+      font-size: 14px; /* 字體大小 */
+      display: inline-block; /* 行內區塊 */
+    }
+
+    .stations {
+      display: flex; /* Flexbox */
+      flex-direction: column; /* 垂直排列 */
+      gap: 15px; /* 元素間距 */
+      margin-bottom: 15px; /* 下方距離 */
+    }
+
+    .station {
+      background-color: #e7f4ff; /* 較淺藍背景 */
+      border-left: 5px solid #004080; /* 左側藍色線條 */
+      padding: 10px 15px; /* 內距 */
+      border-radius: 8px; /* 圓角 */
+      display: flex; /* Flexbox */
+      align-items: center; /* 垂直置中 */
+      gap: 15px; /* 元素間距 */
+    }
+
+    .station-icon {
+      width: 32px; /* 圖示寬度 */
+      height: 32px; /* 圖示高度 */
+      flex-shrink: 0; /* 不壓縮圖示 */
+    }
+
+    .station-info {
+      flex-grow: 1; /* 自動填滿剩餘空間 */
+    }
+
+    .station-name {
+      font-weight: 700; /* 更粗的粗體 */
+      font-size: 16px; /* 字體大小 */
+      color: #002855; /* 深藍色字 */
+    }
+
+    .details {
+      font-size: 14px; /* 字體大小 */
+      color: #004080; /* 較淺的藍色字 */
+      margin-top: 3px; /* 上方距離 */
+    }
+
+    .arrow {
+      font-size: 24px; /* 箭頭大小 */
+      color: #004080; /* 藍色箭頭 */
+      text-align: center; /* 置中 */
+      margin: 10px 0; /* 上下間距 */
+    }
+
+    .info-row {
+      display: flex; /* Flexbox */
+      justify-content: space-between; /* 左右分開對齊 */
+      font-weight: bold; /* 粗體 */
+      font-size: 16px; /* 字體大小 */
+      color: #002855; /* 深藍字 */
+    }
+
+    #google_translate_element {
+      position: absolute; /* 絕對定位 */
+      top: 20px; /* 距上方 20px */
+      right: 20px; /* 距右側 20px */
+      z-index: 1000; /* 堆疊順序高 */
+      padding: 5px 10px; /* 內距 */
+      font-size: 14px; /* 字體大小 */
+      border-radius: 5px; /* 圓角 */
+      border: 1px solid #004080; /* 邊框 */
+      background-color: #ffffff; /* 白底 */
+      color: #002855; /* 深藍字 */
+    }
+	 /* 返回首頁按鈕樣式 */
+    .back-button {
+      padding: 15px 30px; /* 內邊距 */
+      font-size: 18px; /* 字體大小 */
+      background-color: white; /* 白色背景 */
+      color: #002855; /* 深藍字體 */
+      border-radius: 10px; /* 圓角 */
+      cursor: pointer; /* 游標變手指 */
+      border: none; /* 無邊框 */
+      transition: background-color 0.2s; /* 背景色漸變 */
+      display: block; /* 讓按鈕獨占一行 */
+      margin: 0 auto; /* 水平置中 */
+      max-width: 200px; /* 最大寬度 */
+      text-align: center; /* 文字置中 */
+    }
+    /* 按鈕懸停效果 */
+    .back-button:hover {
+      background-color: #e6f0ff; /* 淺藍背景 */
+    }
+  </style>
+</head>
+<body>
+  <div id="google_translate_element"></div> <!-- Google 翻譯按鈕的位置 -->
+
+  <header>
+    <div class="left-header">
+      <h1>留學台灣指南</h1> <!-- 主標題 -->
+      <h2>多語言平台</h2> <!-- 副標題 -->
+    </div>
+  </header>
+
+  <main>
+    <h2 class="route-title">桃園機場到明新科技大學大眾運輸</h2> <!-- 主要段落標題 -->
+
+    <!-- 路線1 -->
+    <section class="route-container">
+      <div class="route-header">
+        <span class="tag">路線1 - 便宜</span> <!-- 標籤：便宜 -->
+        大桃園捷運 → 老街溪站 → 計程車 → 中壢火車站 → 火車 → 新豐火車站 → 計程車
+      </div>
+      <div class="stations">
+        <!-- 各站資料區塊 -->
+        <div class="station">
+          <img src="https://img.icons8.com/color/48/000000/subway.png" alt="捷運站" class="station-icon" />
+          <div class="station-info">
+            <div class="station-name">桃園機場</div>
+            <div class="details">搭乘大桃園捷運</div>
+            <div class="details">票價：約 NT$30</div>
+            <div class="details">時間：約 20 分鐘</div>
+          </div>
+        </div>
+
+        <div class="arrow">➡️</div> <!-- 箭頭指向下一站 -->
+
+        <div class="station">
+          <img src="https://img.icons8.com/color/48/000000/subway.png" alt="捷運站" class="station-icon" />
+          <div class="station-info">
+            <div class="station-name">A22 老街溪站</div>
+            <div class="details">下車後搭計程車到中壢火車站</div>
+            <div class="details">計程車費：約 NT$100</div>
+            <div class="details">時間：約 15 分鐘</div>
+          </div>
+        </div>
+
+        <div class="arrow">➡️</div>
+
+        <div class="station">
+          <img src="https://img.icons8.com/ios-filled/50/004080/train.png" alt="火車" class="station-icon" />
+          <div class="station-info">
+            <div class="station-name">中壢火車站</div>
+            <div class="details">搭火車到新豐火車站</div>
+            <div class="details">票價：約 NT$30</div>
+            <div class="details">時間：約 10 分鐘</div>
+          </div>
+        </div>
+
+        <div class="arrow">➡️</div>
+
+        <div class="station">
+          <img src="https://img.icons8.com/ios-filled/50/004080/train.png" alt="火車" class="station-icon" />
+          <div class="station-info">
+            <div class="station-name">新豐火車站</div>
+            <div class="details">下車後搭計程車到明新科技大學</div>
+            <div class="details">計程車費：約 NT$150</div>
+            <div class="details">時間：約 15 分鐘</div>
+          </div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div>總費用：約 NT$310</div> <!-- 總花費 -->
+        <div>總時間：約 70 分鐘</div> <!-- 總時間 -->
+      </div>
+    </section>
+
+    <!-- 路線2 -->
+    <section class="route-container">
+      <div class="route-header">
+        <span class="tag">路線2 - 方便</span> 直接搭計程車
+      </div>
+      <div class="stations">
+        <div class="station">
+          <img src="https://img.icons8.com/ios-filled/50/004080/taxi.png" alt="計程車" class="station-icon" />
+          <div class="station-info">
+            <div class="station-name">桃園機場</div>
+            <div class="details">直接搭計程車至明新科技大學</div>
+            <div class="details">費用：約 NT$1500</div>
+            <div class="details">時間：約 40 分鐘</div>
+          </div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div>總費用：約 NT$1500</div>
+        <div>總時間：約 40 分鐘</div>
+      </div>
+    </section>
+	<!-- 返回首頁按鈕 -->
+    <button class="back-button" id="back-home-button" onclick="window.location.href='main_page1.html'">
+      返回首頁
+    </button>
+  </main>
+
+  <footer>
+    <span>畢業論文所有</span> <!-- 頁尾資訊 -->
+  </footer>
+
+  <!-- Google 翻譯初始化 -->
+  <script src="translate.js"></script>
+  <!-- 載入 Google 翻譯插件 -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- 載入 Google 翻譯 API -->
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html> <!-- 宣告文件類型為 HTML5 -->
+<html lang="zh-Hant"> <!-- 設定網頁語言為繁體中文 -->
+<head>
+  <meta charset="UTF-8"> <!-- 設定文件編碼為 UTF-8，支援多種語言字元 -->
+  <title>銀行帳戶申請</title> <!-- 網頁標題，顯示在瀏覽器標籤上 -->
+  <style>
+    /* 一般頁面字體與背景設定 */
+    body {
+      font-family: 'Segoe UI', sans-serif; /* 字體使用 Segoe UI，無襯線 */
+      margin: 0; /* 移除瀏覽器預設外距 */
+      background-color: #e6f0ff; /* 淺藍背景色 */
+    }
+
+    /* 頁首樣式 */
+    header {
+      background-color: #002855; /* 深藍色背景 */
+      padding: 20px; /* 內距 20px */
+      display: flex; /* 使用 Flexbox 排版 */
+      justify-content: space-between; /* 主軸兩端對齊 */
+      align-items: center; /* 交叉軸置中對齊 */
+    }
+
+    /* 頁首 LOGO 區塊裡的主標題 */
+    .header-logo h1 {
+      margin: 0; /* 取消標題外距 */
+      font-size: 24px; /* 字體大小 24px */
+      color: #ffffff; /* 白色文字 */
+    }
+
+    /* 頁首 LOGO 區塊裡的副標題 */
+    .header-logo h2 {
+      margin: 5px 0 0 0; /* 上方外距 5px，其他為 0 */
+      font-size: 16px; /* 字體大小 16px */
+      color: #a3cfff; /* 淺藍色文字 */
+    }
+
+   /* Google 翻譯插件的樣式，固定右上角 */
+    #google_translate_element {
+      position: absolute; /* 絕對定位 */
+      top: 20px; /* 距離上方 20px */
+      right: 20px; /* 距離右方 20px */
+      z-index: 1000; /* 顯示層級最高，避免被遮蓋 */
+      padding: 5px 10px; /* 內距上下 5px，左右 10px */
+      font-size: 14px; /* 字體大小 14px */
+      border-radius: 5px; /* 圓角 5px */
+      border: 1px solid #004080; /* 藍色邊框 */
+      background-color: #ffffff; /* 白色背景 */
+      color: #002855; /* 深藍色文字 */
+    }
+
+    /* 主要內容區域 */
+    main {
+      padding: 30px; /* 內距 30px */
+      max-width: 800px; /* 最大寬度 800px */
+      margin: 0 auto; /* 左右自動置中 */
+    }
+
+    /* 三個區塊的容器，使用 Flex 排版 */
+    .box-container {
+      display: flex; /* 啟用彈性盒模型 */
+      justify-content: space-around; /* 平均分布空間 */
+      margin-top: 30px; /* 上方外距 30px */
+      gap: 30px; /* 區塊間隔 30px */
+    }
+
+    /* 每個區塊的樣式 */
+    .section-box {
+      width: 30%; /* 區塊寬度約為容器的 30% */
+      padding: 20px; /* 內距 20px */
+      border: 3px solid #004080; /* 藍色實線邊框，寬度 3px */
+      border-radius: 12px; /* 圓角半徑 12px */
+      background-color: #d9e6ff; /* 淺藍背景色 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 淡淡的陰影效果 */
+      margin-bottom: 20px; /* 下方外距 20px */
+    }
+
+    /* 區塊標題文字樣式 */
+    .section-box h2 {
+      font-size: 20px; /* 字體大小 20px */
+      color: #0059b3; /* 深藍色文字 */
+      font-weight: bold; /* 粗體 */
+      display: flex; /* 使用 Flex 排版 */
+      justify-content: space-between; /* 兩端對齊 */
+      align-items: center; /* 交叉軸置中 */
+      margin-bottom: 10px; /* 下方外距 10px */
+    }
+
+    /* 區塊內文字段落樣式 */
+    .section-box p {
+      margin-bottom: 10px; /* 下方外距 10px */
+    }
+
+    /* 無序清單樣式 */
+    .section-box ul {
+      list-style: none; /* 移除預設項目符號 */
+      padding-left: 0; /* 取消左側內距 */
+    }
+
+    /* 清單項目間距 */
+    .section-box ul li {
+      margin-bottom: 8px; /* 下方外距 8px */
+    }
+
+    /* 圖標和文字間距 */
+    .icon {
+      margin-right: 10px; /* 右側外距 10px */
+    }
+
+    /* 返回按鈕基本樣式 */
+    .back-button {
+      padding: 15px 30px; /* 內距上下 15px，左右 30px */
+      font-size: 18px; /* 字體大小 18px */
+      background-color: white; /* 白色背景 */
+      color: #002855; /* 深藍色文字 */
+      border-radius: 10px; /* 圓角半徑 10px */
+      cursor: pointer; /* 游標為手指，提示可點擊 */
+      border: none; /* 無邊框 */
+      transition: background-color 0.2s; /* 背景顏色變化動畫 0.2秒 */
+      display: inline-flex; /* 內聯彈性盒模型 */
+      align-items: center; /* 交叉軸置中 */
+      justify-content: center; /* 主軸置中 */
+    }
+
+    /* 按鈕滑鼠懸停時樣式 */
+    .back-button:hover {
+      background-color: #e6f0ff; /* 淺藍色背景 */
+    }
+
+    /* 按鈕容器置中 */
+    .button-grid {
+      display: flex; /* 使用 Flex 排版 */
+      justify-content: center; /* 水平置中 */
+      margin-top: 20px; /* 上方外距 20px */
+    }
+
+    /* 頁腳樣式 */
+    footer {
+      text-align: center; /* 文字置中 */
+      padding: 20px; /* 內距 20px */
+      font-size: 14px; /* 字體大小 14px */
+      color: #ffffff; /* 白色文字 */
+      background-color: #002855; /* 深藍背景 */
+    }
+
+    /* 響應式：當視窗寬度小於 768px 時 */
+    @media screen and (max-width: 768px) {
+      .box-container {
+        flex-direction: column; /* 改成垂直排列 */
+        gap: 15px; /* 區塊間距縮小 */
+      }
+
+      .section-box {
+        width: 100%; /* 區塊寬度改成 100% */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Google 翻譯插件容器 -->
+  <div id="google_translate_element"></div>
+  
+  <!-- 頁首區塊 -->
+  <header>
+    <div class="header-logo">
+      <h1 id="site-title">留學台灣指南</h1> <!-- 網站主標題 -->
+      <h2 id="site-subtitle">銀行帳戶申請</h2> <!-- 網站副標題 -->
+    </div>
+  </header>
+
+  <!-- 三個主要區塊容器 -->
+  <div class="box-container">
+    <!-- 第一區塊：申請所需資料 -->
+    <div class="section-box">
+      <h2 id="documents-title"><span class="icon">📄申請所需資料</span></h2> <!-- 區塊標題及圖示 -->
+      <p id="documents-desc">申請銀行帳戶所需的主要文件：</p> <!-- 簡介說明 -->
+      <ul>
+        <li id="passport">有效護照</li> <!-- 清單項目 -->
+        <li id="arc">居留證（ARC）</li> <!-- 清單項目 -->
+        <li id="second-id">第二證件（如學生證）</li> <!-- 清單項目 -->
+        <li id="stamp-signature">印章或簽名</li> <!-- 清單項目 -->
+      </ul>
+    </div>
+
+    <!-- 第二區塊：金融卡申請 -->
+    <div class="section-box">
+      <h2 id="bank-card-title"><span class="icon">💳金融卡申請</span></h2> <!-- 區塊標題及圖示 -->
+      <p id="bank-card-desc">辦理金融卡（提款卡）時需提供的資料：</p> <!-- 簡介說明 -->
+      <ul>
+        <li id="bank-card-account">郵局儲金帳戶已開戶</li> <!-- 清單項目 -->
+        <li id="identity-doc">身份證件（同上）</li> <!-- 清單項目 -->
+        <li id="stamp-signature-card">印章或簽名</li> <!-- 清單項目 -->
+      </ul>
+    </div>
+
+    <!-- 第三區塊：網路/行動郵局 -->
+    <div class="section-box">
+      <h2 id="online-banking-title"><span class="icon">📱網路/行動郵局</span></h2> <!-- 區塊標題及圖示 -->
+      <p id="online-banking-desc">申請網路或行動郵局（線上轉帳）的要求：</p> <!-- 簡介說明 -->
+      <ul>
+        <li id="bank-account">必須先有郵局帳戶</li> <!-- 清單項目 -->
+        <li id="identity-doc-mobile">身份證明文件</li> <!-- 清單項目 -->
+        <li id="in-person">本人親自辦理</li> <!-- 清單項目 -->
+        <li id="mobile-number">手機號碼（接收驗證碼）</li> <!-- 清單項目 -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- 返回首頁按鈕 -->
+  <div class="button-grid">
+    <button class="back-button" id="back-home-button" onclick="window.location.href='main_page1.html'">返回首頁</button>
+  </div>
+
+  <!-- 頁腳 -->
+  <footer>
+    <span>畢業論文所有</span> <!-- 頁腳文字 -->
+  </footer>
+
+<!-- Google 翻譯初始化 -->
+  <script src="translate.js"></script>
+  <!-- 載入 Google 翻譯插件 -->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
