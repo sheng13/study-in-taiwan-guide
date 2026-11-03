@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="title desc">
+  <title id="title">留學台灣指南｜海外學生專題網站</title>
+  <desc id="desc">紅黑色標題橫幅，右側以打開的書本與路線節點呈現留學生活指南；不是網站截圖。</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#09090d"/><stop offset="1" stop-color="#281017"/></linearGradient></defs>
+  <rect width="1280" height="320" rx="20" fill="url(#bg)"/>
+  <rect y="36" width="7" height="248" fill="#ef334f"/>
+  <circle cx="1080" cy="160" r="116" fill="#1b1016" stroke="#632231"/>
+  <path d="M972 100q54-26 108 0q54-26 108 0v133q-54-24-108 0q-54-24-108 0z" fill="#29131d" stroke="#e84a64" stroke-width="3"/>
+  <path d="M1080 100v133" stroke="#e84a64" stroke-width="3"/>
+  <g stroke="#8d3a4d" stroke-width="3" stroke-linecap="round"><path d="M993 124l61 0M993 143h47M993 162h56M1103 124h62M1103 143h48"/></g>
+  <path d="M1110 204l20-25 24 13 18-25" fill="none" stroke="#ef657e" stroke-width="3" stroke-linecap="round"/>
+  <g fill="#ffd9e0"><circle cx="1110" cy="204" r="4"/><circle cx="1130" cy="179" r="4"/><circle cx="1154" cy="192" r="4"/><circle cx="1172" cy="167" r="4"/></g>
+  <g font-family="Arial, Noto Sans TC, Microsoft JhengHei, sans-serif">
+    <text x="64" y="78" font-size="15" letter-spacing="4" fill="#fa7287">STUDY IN TAIWAN / STUDENT PROJECT</text>
+    <text x="60" y="153" font-size="58" font-weight="700" fill="#fff5f5">留學台灣指南</text>
+    <text x="64" y="207" font-size="25" fill="#f4b4be">海外學生的校園與生活資訊專題</text>
+    <text x="64" y="264" font-size="17" fill="#b9a5ac">靜態頁面 · 多語元件 · 本機意見回饋</text>
+  </g>
+</svg>
